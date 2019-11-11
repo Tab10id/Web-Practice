@@ -32,10 +32,6 @@ tr {
 th {
     background: #7AA899;
 }
-label {
-    display: block;
-    background: #d9ecff;
-}
 button {
     position: absolute;
     right: 10px;
