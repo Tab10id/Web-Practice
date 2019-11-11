@@ -1,0 +1,41 @@
+body {
+    background:
+            radial-gradient(circle at 0% 50%, rgba(96, 16, 48, 0) 9px, #613 10px, rgba(96, 16, 48, 0) 11px) 0px 10px,
+            radial-gradient(at 100% 100%,      rgba(96, 16, 48, 0) 9px, #613 10px, rgba(96, 16, 48, 0) 11px),
+            #8a3;
+    background-size: 20px 20px;
+
+    font-family: Arial, Serif;
+    color: #FCFD8D;
+}
+
+table {
+    width: 80%;
+    margin: 0 auto;
+    background: #9fcf9f;
+    color: #005f00;
+
+}
+
+nav{
+    background: #9fcf9f;
+}
+
+a{
+    color: #005f00;
+}
+
+th {
+    background: #FCFD8D;
+}
+
+label {
+    display: block;
+    padding-left: 15px;
+}
+
+#main td {
+    color: #A00000;
+}
+
+

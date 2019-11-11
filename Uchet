@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Учёт воды</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+<article>
+    <h1>
+        Учёт горячей и холодной воды
+    </h1>
+</article>
+<nav>
+    <a href="">2018</a>
+    <a href="">2019</a>
+    <a href="">2020</a>
+</nav>
+<br>
+<table border="1" width="50%" id = "main">
+    <caption>Показатели воды</caption>
+    <tr>
+        <th>Месяц</th>
+        <th>Горячая</th>
+        <th>Холодная</th>
+    </tr>
+    <tr>
+        <td>Январь</td>
+        <td>6.654</td>
+        <td>9.446</td>
+    </tr>
+    <tr>
+        <td>------</td>
+        <td>7.64</td>
+        <td>8.543</td>
+    </tr>
+    <tr>
+        <td>Декабрь</td>
+        <td>4.654</td>
+        <td>9.446</td>
+    </tr>
+</table>
+<form>
+    <br>
+    <div>
+        <label>Ведите объём холодной воды</label>
+        <input type = "text">
+    </div>
+    <br>
+    <div>
+        <label>Ведите объём горячей воды</label>
+        <input type = "text">
+    </div>
+    <div>
+        <label>Ведите дату</label>
+        <input type = "date">
+    </div>
+    <br>
+    <span>
+        <input type="reset">
+    </span>
+    <span>
+        <input type="submit" style="color:blueviolet" >
+    </span>
+</form>
+</body>
+</html>
