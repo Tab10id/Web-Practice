@@ -294,3 +294,29 @@ a<<4
 puts a
 puts a & [3,4]
 
+
+module B
+  def hello(name)
+    puts "hello" + name
+  end
+end
+
+class A
+  extend B
+  hello"viki"
+end
+
+module B
+  def hello(name)
+    define_method name do
+      puts "hello" + name
+    end
+  end
+end
+
+class A
+  extend B
+  hello"viki"
+end
+
+A.new.viki
