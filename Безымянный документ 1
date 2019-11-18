@@ -1,0 +1,296 @@
+class A
+  def sum(a,b)
+    a+b
+  end
+end
+
+class B < A
+  def hello
+    'hello'
+  end
+end
+
+puts A.new.sum(2,43)
+puts B.new.sum(2,5)
+puts B.new.hello
+
+module B
+  def sum(a,b)
+    a+b
+  end
+end
+
+class A
+  include B
+end
+
+puts A.new.sum(5,6)
+
+puts "hello" + 3.to_s
+puts "42".to_i + 5
+puts :hello
+puts "hello" == "hello"
+puts "hello".__id__
+puts "hello".__id__
+puts :hello.__id__
+puts :hello.__id__
+
+m = {
+    :a => 42,
+    b: 43
+}
+puts m
+puts m[:a]
+arr = [1,2,3,4,5]
+puts arr
+f = false
+t = true
+c = nil 
+
+
+arr = [1,2,3,4,5]
+arr.each do |i|
+  puts i*i
+end
+
+{a:1, b:2}.each do |k,v|
+  puts k.to_s + v.to_s
+end
+
+arr2 = arr.map do |i|
+  i*i
+end
+puts arr2
+
+def a
+  42 + yield
+end
+
+puts(a do
+  35
+end)
+puts a {42}
+
+def b(i)
+  42 + yield(i)
+end
+
+puts b (32) {|i| 42 * i}
+
+def two_plus(m)
+  42 + yield(m)
+end
+puts two_plus (32) {|i| 42 * i}
+a = puts two_plus (32) do |i|
+  puts i
+  i
+end
+puts a
+
+puts [1,2,3,4].map { |i| i*i}.reduce(:+)
+puts 5.+(4)
+
+a = [1,2,3,4].reduce(34) do |result, i|
+  result * i
+end
+puts a
+
+a = [1,2,3,4].map {|i| i+3}.reduce(34) do |result, i|
+  result * i
+end
+puts a
+
+def a(i)
+  puts i
+end
+
+[1,2,3,4].each(&method(:a))
+
+class A
+  def self.hello
+    puts "hello"
+  end
+end
+puts A.__id__
+puts A.hello
+
+def A.met
+42
+end
+puts A.met
+
+puts self
+
+b = A
+b.hello
+
+puts true.class
+puts b.class
+
+def A.something
+  34576
+end
+
+def A.hello
+  "HELLO"
+end
+puts A.hello
+
+class A
+  class << self
+    def hello
+      puts "hello"
+    end
+  end
+  def hello
+    "HELLO"
+  end
+end
+
+puts A.hello
+puts A.new.hello
+
+class A
+
+  class << self
+    def hello
+      puts "hello"
+    end
+  end
+
+  def initialize(a,b,c)
+    @a = a
+    @b = b
+    @c = c
+  end
+
+  def sum
+    @a + @b + @c
+  end
+
+  def change_a_to_one
+    @a = 1
+  end
+
+end
+
+
+a =  A.new(42,2,3)
+puts a.sum
+b = A.new(42,2,3)
+b.change_a_to_one
+puts b.sum
+
+A.new(42,2,3).tap do |a|
+  a.change_a_to_one
+end.sum
+
+
+
+class A
+
+  class << self
+    def hello
+      puts "hello"
+    end
+  end
+
+  def initialize(a,b,c)
+    @a = a
+    @b = b
+    @c = c
+  end
+
+  def sum
+    @a + @b + @c
+  end
+
+  def change_a_to_one
+    @a = 1
+    self #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  end
+
+end
+
+
+puts A.new(1,2,3).change_a_to_one.sum
+
+class A
+
+  class << self
+    def hello
+      puts "hello"
+    end
+  end
+
+  #attr_reader :a, :b, :c
+  #attr_writer :a, :b, :c
+  attr_accessor :a, :b, :c
+
+  def initialize(a,b,c)
+    @a = a
+    @b = b
+    @c = c
+  end
+
+  def sum
+    @a + @b + @c
+  end
+
+  def change_a_to_one
+    @a = 1
+    self
+  end
+
+  def c
+    @c
+  end
+
+  def a=(val)
+    @a = val
+  end
+
+  def a_bigger_then_forty_two?
+    @a >42
+  end
+
+  def a_danger!
+    @a = "danger"
+  end
+
+end
+puts A.new(1,2,3).c
+obj =  A.new(1,2,3)
+obj.a = 34
+puts obj.a
+puts obj.a_bigger_then_forty_two?
+puts obj.a_danger!
+
+b = [1,2,3,4,5]
+b.map! {|i| i*2}
+puts b
+c = [1,2,3,4,5]
+c.reverse
+puts c
+c = [1,2,3,4,5]
+c.reverse!
+puts c
+
+
+#truthy
+#falsey
+
+a = false
+b = nil
+
+if a
+  puts "good"
+else
+puts "bad"
+end
+
+a = []
+a<<4
+puts a
+puts a & [3,4]
+
