@@ -1,9 +1,14 @@
 require 'socket'
+
 server = TCPServer.new(9999)
-#SERVER_ROOT = "/home/user1/RubymineProjects/WebServ"
-SERVER_ROOT = "D:/Текущие/YouLab/Serv-Practice"
+
+SERVER_ROOT = "/home/user1/myRep/Web-Practice/HTML-Practice"
+
 while (session = server.accept)
   request = session.gets
+
+  next unless request
+
   puts request
   method, full_path = request.split(" ")
   file_path = "#{SERVER_ROOT}#{full_path}"
@@ -26,4 +31,5 @@ while (session = server.accept)
   session.print response
   session.close
 end
+
 #http://127.0.0.1:9999/index.html
