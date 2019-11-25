@@ -1,0 +1,126 @@
+bundle install
+
+Gemfile
+source "https://rubygems.org"
+gem "rspec"
+gem "simplecov"
+
+lunh.rb
+class CardChecker
+  #attr_reader :number
+  #def init (number)
+  #  @number = number
+  #end
+  def Algorithm(number)
+    number
+       .reverse
+       .delete(" ")
+       .chars
+       .map.with_index {|elem,i| i%2 == 1 ? elem.to_i*2 : elem.to_i}
+       .map {|elem| elem>9 ? elem-9 : elem}
+       .inject(0){ |result, elem| result + elem } % 10 === 0
+  end
+
+end
+
+class CardCheckerMock
+  attr_reader :arg
+
+  class << self
+    def Algorithm(arg)
+      puts arg
+      true
+    end
+  end
+
+end
+puts CardCheckerMock.Algorithm("12345")
+puts CardChecker.new.Algorithm("4561261212345464")
+puts CardChecker.new.Algorithm("4561261212345467")
+puts CardChecker.new.Algorithm("4561 2612 1234 5467")
+
+lunh_spec.rb
+require "/home/user1/RubymineProjects/lunh/lunh.rb"
+
+RSpec.describe CardChecker do
+  describe ".Algorithm"
+  it "returns true for valid card" do
+    expect(described_class.new.Algorithm("4561261212345467")).to be_truthy
+  end
+  it "returns false for invalid card" do
+    expect(described_class.new.Algorithm("4561261212345464")).to be_falsey
+  end
+  it "returns true for false for valid card with spaces" do
+    expect(described_class.new.Algorithm("4561 2612 1234 5467")).to be_truthy
+  end
+
+  class CardCheckerMock
+    attr_reader :arg
+
+    class << self
+      def Algorithm(arg)
+        puts arg
+        true
+      end
+    end
+
+  end
+
+end
+
+
+////////////////////////////////////////////
+server
+
+      response << "<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>Hello</body>
+</html>\r\n"
+
+http://127.0.0.1:9999/
+
+
+require 'socket'
+
+server = TCPServer.new(9999)
+
+SERVER_ROOT = "/home/user1/RubymineProjects/WebServ"
+
+while (session = server.accept)
+  request = session.gets
+  puts request
+  method, full_path = request.split(" ")
+  file_path = "#{SERVER_ROOT}#{full_path}"
+  body =
+  if File.file?(file_path)
+     File.read(file_path)
+  else
+    '404'
+  end
+  STATUS =
+      if File.file?(file_path)
+        '200'
+      else
+        '404'
+      end
+  response = "HTTP/1.1 #{STATUS}\r\n"
+  response << "Content-Type: text/html\r\n"
+  response << "\r\n"
+  response << body
+  session.print response
+  session.close
+end
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Hello
+</body>
+</html>
+
