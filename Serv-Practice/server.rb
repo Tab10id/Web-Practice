@@ -32,13 +32,13 @@ while (session = server.accept)
       else
         '404'
       end
-  STATUS =
+  status =
       if File.file?(file_path)
         '200'
       else
         '404'
       end
-  response = "HTTP/1.1 #{STATUS}\r\n"
+  response = "HTTP/1.1 #{status}\r\n"
   response << "Content-Type: #{content_type(file_path)}\r\n"
   response << "\r\n"
   response << body
