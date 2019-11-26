@@ -2,7 +2,21 @@ require 'socket'
 
 server = TCPServer.new(9999)
 
-SERVER_ROOT = "/home/user1/myRep/Web-Practice/HTML-Practice"
+SERVER_ROOT = "C:\\Users\\tablo\\RubymineProjects\\Web-Practice\\HTML-Practice"
+
+def content_type(full_path)
+  _name, extension = full_path.split('.')
+  case extension
+  when 'html'
+    'text/html'
+  when 'css'
+    'text/css'
+  when 'js'
+    'text/javascript'
+  else
+    'application/octet-stream'
+  end
+end
 
 while (session = server.accept)
   request = session.gets
@@ -25,7 +39,7 @@ while (session = server.accept)
         '404'
       end
   response = "HTTP/1.1 #{STATUS}\r\n"
-  response << "Content-Type: text/html\r\n"
+  response << "Content-Type: #{content_type(file_path)}\r\n"
   response << "\r\n"
   response << body
   session.print response
